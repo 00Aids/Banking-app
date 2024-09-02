@@ -4,13 +4,13 @@ import { generarId } from "../helpers/tokens.js";
 import { generarNumeroCuenta } from "../helpers/numCuenta.js";
 
 const formularioLogin = (req, res) => {
-    res.render('auth/login', {  //.render es una funcion que se va a encargar de mostrar una vista
+    res.render('auth/login', {
         pagina: 'Iniciar Sesion'
     });
 };
 
 const formularioRegistro = (req, res) => {
-    res.render('auth/registro', {  //.render es una funcion que se va a encargar de mostrar una vista
+    res.render('auth/registro', {
         pagina: 'Crear cuenta'
     });
 };
@@ -81,8 +81,6 @@ const registrar = async (req, res) => {
     res.redirect('/auth/login');
 };
 
-
-
 const login = async (req, res) => {
     console.log("Ingreso al login");
 
@@ -102,7 +100,7 @@ const login = async (req, res) => {
 
     console.log("email y contraseña", email, contrasena);
 
-    let usuario; // Asegúrate de definir la variable usuario
+    let usuario;
 
     try {
         usuario = await Usuario.findOne({ where: { email } });
@@ -143,7 +141,7 @@ const login = async (req, res) => {
 };
 
 const formularioRecuperarContrasena = (req, res) => {
-    res.render('auth/recuperar-contrasena', {  //.render es una función que se va a encargar de mostrar una vista
+    res.render('auth/recuperar-contrasena', {
         pagina: 'Recuperar Contraseña'
     });
 };
