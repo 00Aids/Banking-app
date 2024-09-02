@@ -1,0 +1,35 @@
+extends ../layout/index
+
+block contenido
+    div.py-10
+        h1.text-4xl.my-2.font-extrabold.text-center Bienvenido
+        h2.text-center.font-extrabold.mt-2= pagina
+
+        div.mt-5.mx-auto.max-w-4xl
+            div.bg-white.py-8.px-6.shadow-lg.rounded-lg
+                p.text-center.text-gray-700 Bienvenido a la sección de cliente. Aquí puedes gestionar tu cuenta.
+                p.text-center.text-xl.mt-4 Tu Cuenta es: #{cuenta}
+
+                div.flex.mt-4.justify-center.space-x-4
+                    a(href="/auth/retiro", class="btn btn-primary bg-blue-500 text-black py-2 px-4 rounded-lg hover:bg-blue-600") Retiro
+                    a(href="/auth/deposito", class="btn btn-primary bg-green-500 text-black py-2 px-4 rounded-lg hover:bg-green-600") Depósito
+                    a(href="/auth/transferencia", class="btn btn-primary bg-yellow-500 text-black py-2 px-4 rounded-lg hover:bg-yellow-600") Transferencias
+
+        if transferencias.length > 0
+            div.mt-10
+                h2.text-2xl.font-extrabold.text-center Historial de Transferencias
+                div.overflow-x-auto.mt-4
+                    table.table-auto.w-full.border-collapse.border.border-gray-200
+                        thead.bg-gray-100
+                            tr
+                                th.px-4.py-2.border.border-gray-200 Enviado a
+                                th.px-4.py-2.border.border-gray-200 Cantidad
+                                th.px-4.py-2.border.border-gray-200 Fecha
+                        tbody
+                            each transferencia in transferencias
+                                tr
+                                    td.px-4.py-2.border.border-gray-200 #{transferencia.recibe}
+                                    td.px-4.py-2.border.border-gray-200 #{transferencia.dinero}
+                                    td.px-4.py-2.border.border-gray-200 #{new Date(transferencia.createdAt).toLocaleString()}
+        else
+            p.text-center.text-gray-700.mt-10 No has realizado ninguna transferencia aún.

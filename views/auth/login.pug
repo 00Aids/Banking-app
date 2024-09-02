@@ -1,0 +1,25 @@
+extends ../layout/index
+
+block contenido
+    div.py-10
+        h1.text-4xl.my.font-extrabold.text-center Bienes
+            span.font-normal Catises 
+        h2.text-center.font-extrabold= pagina
+
+        div.mt-5.mx-auto.max-w-md
+            div.bg-white.py-8.px-4.shadow 
+                form.space-y-5(action="/auth/login" method="POST")
+                    div
+                        label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold(for="email") Tu email 
+                        input#email.w-full.px-3.py-2.border-gray-300.ronded-md.placeholder-gray-400(placeholder="Tu email" type="email" name="email")
+                    div
+                        label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold(for="contrasena") Tu contraseña 
+                        input#contrasena.w-full.px-3.py-2.border-gray-300.ronded-md.placeholder-gray-400(placeholder="Tu contraseña" type="password" name="contrasena")
+
+                    div.flex.items-center.justify-between
+                        a.text-gray-500.text-xs(href="/auth/registro")  ¿No tienes cuenta? Crea una  
+                        a.text-gray-500.text-xs(href="/auth/recuperar-contrasena")  Olvide mi contraseña
+
+                    input(class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 cursor-pointer" type="submit" value="Iniciar Sesion")
+
+
