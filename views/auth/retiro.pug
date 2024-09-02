@@ -1,0 +1,18 @@
+extends ../layout/index
+
+block contenido
+    div.py-10
+        h1.text-4xl.my-2.font-extrabold.text-center Retiro
+        p.text-center.text-xl.mt-4 Tu saldo actual es: $#{dinero} 
+        form(action="/auth/retiro" method="POST" class="mt-6 mx-auto max-w-md bg-white py-8 px-6 shadow-lg rounded-lg")
+            div.mb-4
+                label(for="cantidad" class="block text-gray-700") Cantidad
+                input#cantidad(name="cantidad" type="number" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required)
+            button(type="submit" class="btn btn-primary bg-red-500 text-black py-2 px-4 rounded-lg hover:bg-red-600 mt-4 w-full") Retirar
+        if success
+            p.text-green-500.text-center.mt-4= success
+        if error
+            p.text-red-500.text-center.mt-4= error
+        //- Botón para regresar al inicio
+        div.mt-6.text-center
+            a(href="/auth/inicioCliente" class="text-blue-500 hover:underline") Volver al Inicio
